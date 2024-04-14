@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 
@@ -26,10 +26,7 @@ const LoginForm = ({ changeView }) => {
         event.preventDefault();
         if (validateForm()) {
             console.log('Login Data', loginData);
-            // Typically handle the server submission here
-            if (changeView) {
-                changeView();  // Ensure changeView is not undefined
-            }
+            changeView();  // Simulate successful login, change view or redirect as necessary
         } else {
             console.log('Errors', errors);
         }
@@ -84,8 +81,8 @@ const LoginForm = ({ changeView }) => {
                 <div className="text-center">
                     <a
                         className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                        href="/register"
-                        onClick={() => changeView()}  // Ensure this navigates or changes view
+                        href="#"  // Change this to actual navigation logic
+                        onClick={() => changeView()}
                     >
                         Don&#39;t have an account? Register!
                     </a>
