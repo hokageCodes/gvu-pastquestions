@@ -81,7 +81,7 @@ const LoginForm = ({ changeView }) => {
                 <div className="text-center">
                     <a
                         className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                        href="#"  // Change this to actual navigation logic
+                        href="/register"  // Change this to actual navigation logic
                         onClick={() => changeView()}
                     >
                         Don&#39;t have an account? Register!
