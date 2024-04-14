@@ -42,9 +42,9 @@ function AboutTestimonials() {
         <p className="rw-text-desc">Don&#39;t believe us, Check clients word</p>
 
         <p className="rw-text-format">
-          <span className="rw-text-quote1">''</span>
+          <span className="rw-text-quote1">&#39;&#39;</span>
           <span className="rw-review">{rMessage}</span>
-          <span className="rw-text-quote2">''</span>
+          <span className="rw-text-quote2">&#39;&#39;</span>
         </p>
 
         <div className="rw-authors">
