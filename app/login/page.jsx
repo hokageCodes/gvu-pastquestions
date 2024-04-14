@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const LoginForm = ({ changeView }) => {
+const LoginForm = () => {
     const [loginData, setLoginData] = useState({
         identifier: '',  // This can be email or matric number
         password: ''
@@ -26,7 +26,7 @@ const LoginForm = ({ changeView }) => {
         event.preventDefault();
         if (validateForm()) {
             console.log('Login Data', loginData);
-            changeView();  // Simulate successful login, change view or redirect as necessary
+            window.location.href = '/dashboard'; // Navigate to dashboard or appropriate route
         } else {
             console.log('Errors', errors);
         }
@@ -81,8 +81,7 @@ const LoginForm = ({ changeView }) => {
                 <div className="text-center">
                     <a
                         className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                        href="/register"  // Change this to actual navigation logic
-                        onClick={() => changeView()}
+                        href="/register"  // Use window.location.href if you need to perform this programmatically elsewhere
                     >
                         Don&#39;t have an account? Register!
                     </a>
