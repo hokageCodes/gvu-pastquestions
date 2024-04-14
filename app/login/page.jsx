@@ -85,7 +85,7 @@ const LoginForm = ({ changeView }) => {
                         href="/register"
                         onClick={() => changeView()}  // Change this to actually navigate or trigger view change
                     >
-                        Don't have an account? Register!
+                        Don&#39;t have an account? Register!
                     </a>
                 </div>
             </div>
