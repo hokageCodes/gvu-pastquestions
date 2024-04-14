@@ -27,7 +27,9 @@ const LoginForm = ({ changeView }) => {
         if (validateForm()) {
             console.log('Login Data', loginData);
             // Typically handle the server submission here
-            changeView();  // Simulate successful login, change view or redirect as necessary
+            if (changeView) {
+                changeView();  // Ensure changeView is not undefined
+            }
         } else {
             console.log('Errors', errors);
         }
@@ -83,7 +85,7 @@ const LoginForm = ({ changeView }) => {
                     <a
                         className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                         href="/register"
-                        onClick={() => changeView()}  // Change this to actually navigate or trigger view change
+                        onClick={() => changeView()}  // Ensure this navigates or changes view
                     >
                         Don&#39;t have an account? Register!
                     </a>

@@ -1,11 +1,14 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import RegisterForm from '@/app/register/page';
 import LoginForm from '@/app/login/page';
 
 const AuthFormsContainer = () => {
-    const [showLogin, setShowLogin] = useState(false); // Toggle state between forms
+    // Toggle state between Login and Register forms
+    const [showLogin, setShowLogin] = useState(false);
+
+    const toggleForm = () => setShowLogin(!showLogin);
 
     return (
         <div className="font-mono bg-gray-400">
@@ -17,7 +20,10 @@ const AuthFormsContainer = () => {
                             style={{ backgroundImage: "url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')" }}
                         ></div>
                         <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-                            {showLogin ? <LoginForm changeView={() => setShowLogin(false)} /> : <RegisterForm changeView={() => setShowLogin(true)} />}
+                            {showLogin
+                                ? <LoginForm changeView={toggleForm} />
+                                : <RegisterForm changeView={toggleForm} />
+                            }
                         </div>
                     </div>
                 </div>
