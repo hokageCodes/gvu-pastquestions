@@ -26,7 +26,7 @@ const LoginForm = () => {
         event.preventDefault();
         if (validateForm()) {
             console.log('Login Data', loginData);
-            window.location.href = '/dashboard'; // Navigate to dashboard or appropriate route
+            window.location.href = '/'; // Navigate to dashboard or appropriate route
         } else {
             console.log('Errors', errors);
         }

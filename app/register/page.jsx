@@ -35,7 +35,7 @@ const RegisterForm = ({ changeView }) => {
         if (validateForm()) {
             console.log('Form Data', formData);
             // Navigate or close form upon successful validation
-            changeView();
+            window.location.href = "/login";
         } else {
             console.log('Errors', errors);
         }
@@ -77,7 +77,7 @@ const RegisterForm = ({ changeView }) => {
                     <a
                         className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                         href="/login"
-                        onClick={() => changeView()}
+                        onClick={() => window.location.href = "/login"}
                     >
                         Already have an account? Login!
                     </a>

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import RegisterForm from '@/app/register/page';
-import LoginForm from '@/app/login/page';
+import RegisterForm from '../../app/register/page'
+import LoginForm from '../../app/login/page'
 
 const AuthFormsContainer = () => {
     const [showLogin, setShowLogin] = useState(false);
