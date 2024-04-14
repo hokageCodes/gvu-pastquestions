@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const RegisterForm = ({ changeView }) => {
+const RegisterForm = () => {
     const [formData, setFormData] = useState({
         fullName: '',
         matricNumber: '',
