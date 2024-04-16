@@ -4,13 +4,15 @@ import React, { useState } from 'react';
 
 const LoginForm = () => {
     const [loginData, setLoginData] = useState({
-        identifier: '',  // This can be email or matric number
+        identifier: '',
         password: ''
     });
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: '' }); // Clear error when user starts typing
     };
 
     const validateForm = () => {
@@ -22,13 +24,25 @@ const LoginForm = () => {
         return Object.keys(tempErrors).length === 0;
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        if (validateForm()) {
-            console.log('Login Data', loginData);
-            window.location.href = '/'; // Navigate to dashboard or appropriate route
-        } else {
+        if (!validateForm()) {
             console.log('Errors', errors);
+            return;
+        }
+
+        setLoading(true);
+        try {
+            console.log('Login Data', loginData);
+            // Simulate an API call
+            setTimeout(() => {
+                window.location.href = '/'; // Redirect on success
+                setLoading(false);
+            }, 2000);
+        } catch (error) {
+            console.error('Login Error', error);
+            setErrors({ form: 'Failed to login. Please try again.' });
+            setLoading(false);
         }
     };
 
@@ -39,9 +53,7 @@ const LoginForm = () => {
                 <p className="text-center text-gray-600 mb-6">Log in to access your account and continue your learning journey.</p>
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2" htmlFor="identifier">
-                            Email or Matric Number
-                        </label>
+                        <label className="block text-sm font-bold text-gray-700 mb-2" htmlFor="identifier">Email or Matric Number</label>
                         <input
                             className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                             id="identifier"
@@ -50,13 +62,12 @@ const LoginForm = () => {
                             placeholder="Email or Matric Number"
                             onChange={handleChange}
                             value={loginData.identifier}
+                            disabled={loading}
                         />
                         {errors.identifier && <p className="text-red-500 text-xs italic">{errors.identifier}</p>}
                     </div>
                     <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2" htmlFor="password">
-                            Password
-                        </label>
+                        <label className="block text-sm font-bold text-gray-700 mb-2" htmlFor="password">Password</label>
                         <input
                             className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                             id="password"
@@ -65,6 +76,7 @@ const LoginForm = () => {
                             placeholder="Password"
                             onChange={handleChange}
                             value={loginData.password}
+                            disabled={loading}
                         />
                         {errors.password && <p className="text-red-500 text-xs italic">{errors.password}</p>}
                     </div>
@@ -72,8 +84,9 @@ const LoginForm = () => {
                         <button
                             className="w-full px-4 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline font-bold"
                             type="submit"
+                            disabled={loading}
                         >
-                            Log In
+                            {loading ? 'Logging In...' : 'Log In'}
                         </button>
                     </div>
                 </form>
@@ -81,9 +94,9 @@ const LoginForm = () => {
                 <div className="text-center">
                     <a
                         className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                        href="/register"  // Use window.location.href if you need to perform this programmatically elsewhere
+                        href="/register"  // Consider changing href to a method for better SPA performance
                     >
-                        Don&#39;t have an account? Register!
+                        Don’t have an account? Register!
                     </a>
                 </div>
             </div>
